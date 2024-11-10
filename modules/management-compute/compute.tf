@@ -25,3 +25,9 @@ resource "google_project_service" "compute_api" {
   disable_on_destroy = false
   depends_on         = [google_project_service.service_usage_api]
 }
+
+resource "google_project_service" "iam_api" {
+  project            = var.project_id
+  service            = "iam.googleapis.com"
+  disable_on_destroy = false
+}

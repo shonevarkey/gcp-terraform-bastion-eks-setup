@@ -1,7 +1,6 @@
 resource "google_compute_network" "vpc_network" {
   name                    = var.vpc_name
   auto_create_subnetworks = false
-  #tags                    = ["${var.vpc_name}"]
 }
 
 resource "google_compute_subnetwork" "public_subnet1" {
@@ -9,7 +8,6 @@ resource "google_compute_subnetwork" "public_subnet1" {
   ip_cidr_range = var.subnet1_cidr
   network       = google_compute_network.vpc_network.id
   region        = var.region
-  #depends_on = [google_compute_network.vpc_network]
 
 }
 
@@ -18,7 +16,6 @@ resource "google_compute_subnetwork" "public_subnet2" {
   ip_cidr_range = var.subnet2_cidr
   network       = google_compute_network.vpc_network.id
   region        = var.region
-  #depends_on = [google_compute_network.vpc_network]
 
 }
 
@@ -27,7 +24,6 @@ resource "google_compute_subnetwork" "private_subnet1" {
   ip_cidr_range = var.subnet3_cidr
   network       = google_compute_network.vpc_network.id
   region        = var.region
-  #depends_on = [google_compute_network.vpc_network]
 
 }
 
