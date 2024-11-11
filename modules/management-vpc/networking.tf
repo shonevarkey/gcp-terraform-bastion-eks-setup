@@ -27,55 +27,34 @@ resource "google_compute_subnetwork" "private_subnet1" {
 
 }
 
+# Cloud Router used for NAT
+resource "google_compute_router" "nat_router" {
+  name    = "${var.vpc_name}-router"
+  network = google_compute_network.vpc_network.id
+  region  = var.region
+}
+
+# NAT Gateway using the Cloud Router
+resource "google_compute_router_nat" "nat_gateway" {
+  name                               = "${var.vpc_name}-nat-gateway"
+  router                             = google_compute_router.nat_router.name
+  region                             = var.region
+  nat_ip_allocate_option             = "AUTO_ONLY"
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+}
+
+
+# Route for public subnets to access internet via default internet gateway
 resource "google_compute_route" "default_internet_route" {
-  name             = var.route_name
+  name             = var.public_route_name
   dest_range       = "0.0.0.0/0"
   network          = google_compute_network.vpc_network.id
   next_hop_gateway = "default-internet-gateway"
   priority         = 1000
-  tags             = ["${var.route_name}"]
+  tags             = ["${var.public_route_name}"]
 }
 
-resource "google_compute_firewall" "allow_internet_egress_public" {
-  name    = "allow-egress-internet-public"
-  network = google_compute_network.vpc_network.id
 
-  allow {
-    protocol = "all"
-  }
 
-  direction          = "EGRESS"
-  destination_ranges = ["0.0.0.0/0"]
-  priority           = 1000
-  target_tags        = ["public"]
-}
 
-resource "google_compute_firewall" "allow_internet_ingress_public" {
-  name    = "allow-ingress-public"
-  network = google_compute_network.vpc_network.id
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22", "80"]
-  }
-
-  direction     = "INGRESS"
-  source_ranges = ["0.0.0.0/0"]
-  priority      = 1000
-  target_tags   = ["public"]
-}
-
-resource "google_compute_firewall" "allow_internal_private" {
-  name    = "allow-internal-private"
-  network = google_compute_network.vpc_network.id
-
-  allow {
-    protocol = "all"
-  }
-
-  direction          = "EGRESS"
-  destination_ranges = ["10.0.0.0/16"] # Allow only internal traffic within VPC
-  priority           = 1000
-  target_tags        = ["private"]
-}
 

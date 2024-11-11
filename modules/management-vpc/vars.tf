@@ -49,8 +49,9 @@ variable "subnet3_name" {
   type        = string
 }
 
-variable "route_name" {
-  description = "Default route table name"
+variable "public_route_name" {
+  description = "Default public route table name"
   type        = string
 }
+
 

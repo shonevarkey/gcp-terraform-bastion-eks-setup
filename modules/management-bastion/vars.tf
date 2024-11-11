@@ -43,7 +43,3 @@ variable "bastion_subnet" {
   type        = string
 }
 
-variable "bastion_firewall_id" {
-  description = "Bastion firewall ID"
-  type        = string
-}

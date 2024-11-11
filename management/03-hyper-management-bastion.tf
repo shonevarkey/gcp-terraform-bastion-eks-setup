@@ -12,7 +12,6 @@ module "mgt_bastion" {
   source               = "../modules/management-bastion"
   vpc_id               = module.mgt_vpc.vpc_network_id
   bastion_subnet       = module.mgt_vpc.public_subnet1_id
-  bastion_firewall_id  = google_compute_firewall.allow_bastion_ingress.id
   bastion_name         = local.bastion_name
   bastion_user         = local.bastion_user
   bastion_volumesize   = local.bastion_volumesize
