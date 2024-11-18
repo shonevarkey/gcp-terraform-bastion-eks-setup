@@ -83,5 +83,5 @@ resource "google_compute_instance" "kubectl" {
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
-  tags = ["kubectl"]
+  tags = ["kubectl", "management-vpc"]
 }
