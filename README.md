@@ -94,7 +94,7 @@ terraform apply
 **1. SSH into the kubectl Instance**
 
 ```yaml
-ssh -i ~/.ssh/<PRIVATE_KEY> kubectl@<INSTANCE_EXTERNAL_IP>
+ssh -i ~/.ssh/<PRIVATE_KEY> <USER_NAME>@<INSTANCE_EXTERNAL_IP>
 ```
 
 **2. Set Up kubeconfig**
