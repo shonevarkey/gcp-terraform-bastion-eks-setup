@@ -1,8 +1,8 @@
 locals {
   kubectl_name         = "kubectl-management-hyper"
-  kubectl_user         = "kubectl"
+  kubectl_user         = "hyper"
   kubectl_volumesize   = "10"
-  kubectl_image        = "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240830"
+  kubectl_image        = "projects/ubuntu-os-cloud/global/images/ubuntu-2404-noble-amd64-v20241115"
   kubectl_instancetype = "e2-medium"
   zone_kubectl         = "us-central1-b"
   project_id_kubectl   = "hypernova-439518"

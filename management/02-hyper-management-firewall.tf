@@ -62,5 +62,3 @@ resource "google_compute_firewall" "allow_egress_kubectl_nat" {
   target_tags        = ["kubectl"]
 }
 
-
-
