@@ -14,9 +14,3 @@ provider "google" {
   zone        = "us-central1-a"
   credentials = "key.json"
 }
-
-resource "google_storage_bucket" "hyperv1" {
-  name     = "hypernova-version1"
-  location = "us-central1"
-
-}
