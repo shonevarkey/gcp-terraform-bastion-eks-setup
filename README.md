@@ -65,24 +65,24 @@ README.md                               # Documentation
 
 ## 🛠️ Setup and Deployment
 
-### 1. Clone the Repository
+**1. Clone the Repository**
 
 ```yaml
-  - git clone <repository-url>
-  - cd <repository-folder>
+  git clone <repository-url>
+  cd <repository-folder>
 ```
 
-### **2. Initialize Terraform**
+**2. Initialize Terraform**
 
 ```yaml
 terraform init
 ```
-### **3. Plan the Deployment**
+**3. Plan the Deployment**
 
 ```yaml
 terraform plan
 ```
-### **4. Apply the Configuration**
+**4. Apply the Configuration**
 
 ```yaml
 terraform apply
@@ -91,22 +91,22 @@ terraform apply
 
 ## 🔑 Configuring kubectl Access
 
-### **1. SSH into the kubectl Instance**
+**1. SSH into the kubectl Instance**
 
 ```yaml
 ssh -i ~/.ssh/<PRIVATE_KEY> kubectl@<INSTANCE_EXTERNAL_IP>
 ```
 
-### **2. Set Up kubeconfig**
+**2. Set Up kubeconfig**
 
 Run the following commands to set up access to the GKE cluster:
 
 ```yaml
-- gcloud auth login
-- gcloud container clusters get-credentials <CLUSTER_NAME> --region <CLUSTER_REGION>
+gcloud auth login
+gcloud container clusters get-credentials <CLUSTER_NAME> --region <CLUSTER_REGION>
 ```
 
-### **3. Verify Access**
+**3. Verify Access**
 
 ```yaml
 kubectl get pods --all-namespaces
