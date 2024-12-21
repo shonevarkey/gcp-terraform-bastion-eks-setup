@@ -60,6 +60,17 @@ README.md                               # Documentation
    export GOOGLE_PROJECT_ID=<your-project-id>
    export GOOGLE_CREDENTIALS=<path-to-service-account-key.json>
    export GOOGLE_REGION=<your-region>
+   ```
+
+3. **IAM Roles:**
+
+   Ensure service accounts have the following roles:
+   
+    ```yaml
+      roles/compute.admin
+      roles/container.admin
+      roles/iam.serviceAccountUser
+    ```
 
 ---
 
@@ -89,12 +100,22 @@ terraform apply
 ```
 ---
 
+## 🔑 Configuring Bastion Access
+
+**1. SSH into the bastion Instance**
+
+```yaml
+ssh -i ~/.ssh/<PRIVATE_KEY> <USER_NAME>@<INSTANCE_EXTERNAL_IP>
+```
+
+---
+
 ## 🔑 Configuring kubectl Access
 
 **1. SSH into the kubectl Instance**
 
 ```yaml
-ssh -i ~/.ssh/<PRIVATE_KEY> <USER_NAME>@<INSTANCE_EXTERNAL_IP>
+ssh -i ~/.ssh/<PRIVATE_KEY> <USER_NAME>@<INSTANCE_INTERNAL_IP>
 ```
 
 **2. Set Up kubeconfig**
