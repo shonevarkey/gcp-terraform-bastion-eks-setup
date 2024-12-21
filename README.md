@@ -67,9 +67,9 @@ README.md                               # Documentation
    Ensure service accounts have the following roles:
    
     ```yaml
-      roles/compute.admin
-      roles/container.admin
-      roles/iam.serviceAccountUser
+    roles/compute.admin
+    roles/container.admin
+    roles/iam.serviceAccountUser
     ```
 
 ---
